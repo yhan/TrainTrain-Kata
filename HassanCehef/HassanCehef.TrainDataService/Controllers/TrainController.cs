@@ -17,7 +17,8 @@ namespace HassanCehef.TrainDataService.Controllers
         [HttpGet("{trainId}")]
         public string Get(string trainId)
         {
-            return this.trainProvider.GetTrain(trainId).ToString();
+            var trainString = this.trainProvider.GetTrain(trainId).ToString();
+            return trainString;
         }
     }
 }

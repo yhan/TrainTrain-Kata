@@ -7,6 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HassanCehef.TrainDataServic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HassanCehef.BookingReferenceService", "HassanCehef.BookingReferenceService\HassanCehef.BookingReferenceService.csproj", "{214140EA-BDA3-46ED-B1D0-5523F6F4F226}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdowns", "Markdowns", "{51DD8202-7D9F-435D-922C-2E0A952F9CC1}"
+	ProjectSection(SolutionItems) = preProject
+		HassanCehef.BookingReferenceService\KestrelUpgradeGuid.md = HassanCehef.BookingReferenceService\KestrelUpgradeGuid.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +29,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8988CC28-CF34-418F-9566-BC5314EDE3CA}
 	EndGlobalSection
 EndGlobal

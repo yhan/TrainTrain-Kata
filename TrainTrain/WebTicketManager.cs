@@ -9,10 +9,12 @@ using TrainTrain.Dal.Entities;
 
 namespace TrainTrain
 {
+    using Newtonsoft.Json;
+
     public class WebTicketManager
     {
-        private const string uriBookingReferenceService = "http://localhost:51691/";
-        private const string urITrainDataService = "http://localhost:50680";
+        private const string uriBookingReferenceService = "http://localhost:51692/";
+        private const string urITrainDataService = "http://localhost:50681";
         private ITrainCaching _trainCaching;
         public WebTicketManager()
         {
@@ -31,6 +33,7 @@ namespace TrainTrain
 
             result = JsonTrain;
 
+     
             var trainInst = new Train(JsonTrain);
             if ((trainInst.ReservedSeats + seats) <= Math.Floor(ThreasholdManager.GetMaxRes() * trainInst.GetMaxSeat()))
             {
@@ -168,7 +171,7 @@ namespace TrainTrain
 
         protected async Task<string> GetTrain(string train)
         {
-            string JsonTrainTopology;
+            string trainTopologyJsonString;
             using (var client = new HttpClient())
             {
                 var value = new MediaTypeWithQualityHeaderValue("application/json");
@@ -179,9 +182,15 @@ namespace TrainTrain
                 // HTTP GET
                 var response = await client.GetAsync(string.Format("api/data_for_train/{0}", train));
                 response.EnsureSuccessStatusCode();
-                JsonTrainTopology = await response.Content.ReadAsStringAsync();
+                trainTopologyJsonString = await response.Content.ReadAsStringAsync();
+
+
+                var topologyJsonString = trainTopologyJsonString.Replace("\\", string.Empty);
+                List<Seat> seats = JsonConvert.DeserializeObject<List<Seat>>(topologyJsonString);
+
+
             }
-            return JsonTrainTopology;
+            return trainTopologyJsonString;
         }
 
         protected async Task<string> GetBookRef(HttpClient client)

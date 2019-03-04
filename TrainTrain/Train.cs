@@ -8,6 +8,9 @@ namespace TrainTrain
     {
         public Train(string trainTopol)
         {
+            //List<Seat> seats = JsonConvert.DeserializeObject<List<Seat>>(trainTopol);
+
+
             this.Seats = new List<Seat>();
             //var sample =
             //"{\"seats\": {\"1A\": {\"booking_reference\": \"\", \"seat_number\": \"1\", \"coach\": \"A\"}, \"2A\": {\"booking_reference\": \"\", \"seat_number\": \"2\", \"coach\": \"A\"}}}";
